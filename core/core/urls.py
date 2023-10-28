@@ -28,7 +28,7 @@ schema_view = get_schema_view(
         default_version="v1",
         description="Brief descriptions about the api",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="bigdeli.ali3@gmail.com"),
+        contact=openapi.Contact(email="jandaghian.amin@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
@@ -38,7 +38,9 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("website.urls")),
+    path("accounts/", include("accounts.urls")),
+    # path("todo/", include("todo.urls")),
+    path("", include("todo.urls"))
 ]
 
 if settings.COMINGSOON:

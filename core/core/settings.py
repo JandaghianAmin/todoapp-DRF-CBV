@@ -49,12 +49,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.contrib.sitemaps",
-    "website",
+    # "website",
     "rest_framework",
     "rest_framework.authtoken",
     "django_filters",
     "drf_yasg",
     "corsheaders",
+    "todo",
+    "accounts"
 ]
 
 
