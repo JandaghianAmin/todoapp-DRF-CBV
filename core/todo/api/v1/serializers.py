@@ -15,7 +15,6 @@ class TaskSerializer(serializers.ModelSerializer):
         fields = ["id","user","title","complete","snipeet"]
 
   
-
 class UserSerialzier(serializers.ModelSerializer):
     todos = TaskSerializer(read_only=True, many=True)
 
