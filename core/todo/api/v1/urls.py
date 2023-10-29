@@ -7,7 +7,6 @@ router.register(r'tasks', views.TodoViewSet, basename="tasks")
 
 
 
-
 urlpatterns = [
     
     path('users/', views.UsersGenericApiView.as_view()),
