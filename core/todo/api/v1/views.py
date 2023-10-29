@@ -23,7 +23,6 @@ class TodoViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
         
-    
 
 class UsersGenericApiView(generics.ListAPIView):
     queryset = User.objects.all()
