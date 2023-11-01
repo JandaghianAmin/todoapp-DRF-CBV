@@ -1,16 +1,11 @@
+# pylint: disable=import-error
+# pylint: disable=missing-docstring
+# pylint: disable=too-few-public-methods
 from rest_framework.routers import DefaultRouter
-from . import views
-from django.urls import path, include
+from .views import TodoViewSet
+
 
 router = DefaultRouter()
-router.register(r'tasks', views.TodoViewSet, basename="tasks")
+router.register(r'tasks', TodoViewSet, basename="tasks")
 
-
-
-urlpatterns = [
-    
-    path('users/', views.UsersGenericApiView.as_view()),
-    
-    ]
-
-urlpatterns += router.urls
+urlpatterns = router.urls
