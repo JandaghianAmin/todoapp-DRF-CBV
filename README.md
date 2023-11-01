@@ -1,1 +1,0 @@
-# todoapp-DRF-CBV
