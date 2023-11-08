@@ -14,7 +14,7 @@ class TodoViewSet(viewsets.ModelViewSet):
     """
     queryset = Task.objects.order_by("id").all()
     serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
         # Automatically associate the current user with the object

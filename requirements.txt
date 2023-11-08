@@ -14,7 +14,8 @@ djangorestframework-simplejwt
 django-cors-headers
 django-robots
 django-debug-toolbar
-
+djoser
+djangorestframework_simplejwt
 # deployment module
 gunicorn
 
@@ -31,4 +32,3 @@ django-redis
 
 # database client
 psycopg2-binary
-

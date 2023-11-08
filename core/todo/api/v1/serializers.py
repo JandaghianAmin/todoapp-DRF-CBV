@@ -1,24 +1,26 @@
 # pylint: disable=import-error
+# pylint: disable=missing-docstring
+# pylint: disable=too-few-public-methods
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from todo.models import Task
-from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
 
-user = get_user_model()
+
+
+class UserSerialzier(serializers.ModelSerializer):    
+
+    class Meta:
+        model = get_user_model()
+        fields = ['id', 'username', 'email', 'first_name', 'last_name']
 
 class TaskSerializer(serializers.ModelSerializer):
-    snipeet= serializers.ReadOnlyField(source="get_snippet")
-    
+    # snipeet= serializers.ReadOnlyField(source="get_snippet")
+    user = UserSerialzier(read_only=True)  # Include the nested serializer
+    # read_only_fields = ['username']
     class Meta:
-        model = Task
-        read_only_fields = ('user',)
-        fields = ["id","user","title","complete","snipeet"]
+        model = Task       
+        fields = ["id","title", "complete","user"]
 
-  
-
-class UserSerialzier(serializers.ModelSerializer):
-    todos = TaskSerializer(read_only=True, many=True)
-
-    class Meta:
-        model = user
-        fields = ["id","username","is_active","todos"]      
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return Task.objects.create(**validated_data)

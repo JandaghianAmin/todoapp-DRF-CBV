@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "django_filters",
     "drf_yasg",
+    "djoser",
     "corsheaders",
     "todo",
     "accounts"
@@ -106,8 +107,8 @@ DATABASES = {
         "ENGINE": config("DB_ENGINE", default="django.db.backends.postgresql"),
         "NAME": config("DB_NAME", default="postgres"),
         "USER": config("DB_USER", default="postgres"),
-        "PASSWORD": config("DB_PASS", default="postgres"),
-        "HOST": config("DB_HOST", default="db"),
+        "PASSWORD": config("DB_PASS", default="123456"),
+        "HOST": config("DB_HOST", default="127.0.0.1"),
         "PORT": config("DB_PORT", cast=int, default=5432),
     }
 }
@@ -229,6 +230,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
+
 }
 
 if config("DISABLE_BROWSEABLE_API", cast=bool, default=False):
@@ -262,6 +264,7 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
+    'AUTH_HEADER_TYPES': ('JWT',),
 }
 
 if config("FILE_DEBUGGER",cast=bool, default=True):
