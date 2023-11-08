@@ -7,7 +7,6 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-
 class TodoViewSet(viewsets.ModelViewSet):
     """
       to get all
@@ -23,7 +22,6 @@ class TodoViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
         
-    
 
 class UsersGenericApiView(generics.ListAPIView):
     queryset = User.objects.all()
